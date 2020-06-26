@@ -51,38 +51,52 @@ public class SinatraStepDefs {
         //asegurar que el titulo sea igual a "Songs By Sinatra";
         assertEquals("Songs By Sinatra", driver.getTitle());
     }
+    @When("I enter {word} and {word}")
+    public void iEnterUserAndPassword(String usuario, String password) {
 
-    @When("I login with correct credentials")
-    public void iLoginWithCorrectCredentials() {
         //dar click en log in
         WebElement linkLogIn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[href='/login']")));
         linkLogIn.click();
 
-        //driver.findElement(By.cssSelector("[href='/login']"));
-
-
         //meter user name y password
-        driver.findElement(By.id("username")).sendKeys("frank");
-        driver.findElement(By.id("password")).sendKeys("sinatra");
+        driver.findElement(By.id("username")).sendKeys(usuario);
+        driver.findElement(By.id("password")).sendKeys(password);
         //dar click en login
         driver.findElement(By.cssSelector("[type='submit']")).click();
-
     }
 
-    @Then("I can see sinatra Home Page")
-    public void iCanSeeSinatraHomePage() {
+//    @When("I login with correct credentials")
+//    public void iLoginWithCorrectCredentials() {
+//        //dar click en log in
+//        WebElement linkLogIn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[href='/login']")));
+//        linkLogIn.click();
+//
+//        //driver.findElement(By.cssSelector("[href='/login']"));
+//
+//
+//        //meter user name y password
+//        driver.findElement(By.id("username")).sendKeys("frank");
+//        driver.findElement(By.id("password")).sendKeys("sinatra");
+//        //dar click en login
+//        driver.findElement(By.cssSelector("[type='submit']")).click();
+//
+//    }
+
+    @Then("I can see sinatra page and enter {word} and {word} and {word} and {word}")
+    public void iCanSeeSinaPagetraAndEnterTitleAndLenghAndDateAndLyric(String title, String lengh, String date, String lyric)
+    {
 
     //crear cancion nueva [href='/songs/new']
     driver.findElement(By.cssSelector("[href='/songs/new']")).click();
 
         //meter Title: song[title]
-        driver.findElement(By.name("song[title]")).sendKeys("Vampiria");
+        driver.findElement(By.name("song[title]")).sendKeys(title);
         // meter lenght: "song[length]"
-        driver.findElement(By.name("song[length]")).sendKeys("50");
+        driver.findElement(By.name("song[length]")).sendKeys(lengh);
         //meter date: name="song[released_on]"
-        driver.findElement(By.name("song[released_on]")).sendKeys("25/06/2020");
+        driver.findElement(By.name("song[released_on]")).sendKeys(date);
         //meter lyrics: name="song[lyrics]"
-        driver.findElement(By.name("song[lyrics]")).sendKeys("Test number 1");
+        driver.findElement(By.name("song[lyrics]")).sendKeys(lyric);
         //save button: [value='Save Song']
         driver.findElement(By.cssSelector("[value='Save Song']")).click();
     }
@@ -140,4 +154,6 @@ public class SinatraStepDefs {
         WebElement cancion = listaCanciones.get(numeroCancion - 1);
         cancion.click();
     }
+
+
 }
