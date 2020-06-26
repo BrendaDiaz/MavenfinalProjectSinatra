@@ -18,6 +18,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertEquals;
+
 public class SinatraStepDefs {
 
     public WebDriver driver;
@@ -28,7 +30,7 @@ public class SinatraStepDefs {
     {
         ChromeOptions opt = new ChromeOptions();
         opt.addArguments("--disable-notifications");
-        //System.setProperty("webdriver.chrome.driver", "C:\\libs\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\libs\\chromedriver.exe");
         driver = new ChromeDriver(opt);
         wait = new WebDriverWait(driver, 30);
         driver.manage().window().setSize(new Dimension(1500, 1000));
@@ -83,9 +85,6 @@ public class SinatraStepDefs {
         driver.findElement(By.name("song[lyrics]")).sendKeys("Test number 1");
         //save button: [value='Save Song']
         driver.findElement(By.cssSelector("[value='Save Song']")).click();
-    }
-
-    private void assertEquals(String songs_by_sinatra, String title) {
     }
 
 
