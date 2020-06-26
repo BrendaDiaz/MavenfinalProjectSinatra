@@ -7,7 +7,7 @@ Feature: Sinatra Login
 
     Examples:
       | user  | password | title    | lengh | date       | lyric   |
-      | frank | sinatra  | vampiria | 20    | 20/06/2020 | sinatra |
+      | frank | sinatra  | vampiria | 20    | 20/06/2020 | testing |
 
 
   Scenario Outline: User can like a song
